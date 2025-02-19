@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre España</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Descubre España</h1>
+    <form id="formulario">
+        <label for="nombre">Nombre completo:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="ccaa">Comunidad Autónoma:</label>
+        <select name="ccaa" id="ccaa">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select><br><br>
+
+        <label for="provincia">Provincia:</label>
+        <select name="provincia" id="provincia">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select><br><br>
+
+        <label for="poblacion">Población:</label>
+        <select name="poblacion" id="poblacion">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select><br><br>
+
+        <input type="submit" value="ENVIAR" id="submit">
+    </form>
+
+    <!-- Sección para mostrar las imágenes -->
+    <div id="image-container"></div>
+
+    <!-- Sección para mostrar los restaurantes -->
+    <div id="restaurant-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
