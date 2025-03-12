@@ -89,9 +89,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+     // Api de la bateria: 
+
+    // Comprobamos si la API de batería está soportada en el navegador
+    // La API de batería permite obtener el estado actual de la batería del dispositivo,
+    // como el nivel de carga, si está cargando, el tiempo hasta que se descargue o cargue completamente, etc.
+
     if ('getBattery' in navigator) {
+
+        // Usamos `navigator.getBattery()` para obtener los detalles de la batería del dispositivo
         navigator.getBattery().then(battery => {
             function updateBatteryStatus() {
+                // Actualizamos el contenedor con la información de la batería
                 batteryStatusContainer.innerHTML = `
                     <p><strong>Nivel de batería:</strong> ${Math.round(battery.level * 100)}%</p>
                     <p><strong>Estado:</strong> ${battery.charging ? 'Cargando' : 'No cargando'}</p>
@@ -100,14 +109,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
             }
 
+            // Llamamos a `updateBatteryStatus()` para mostrar la información al cargar la página
             updateBatteryStatus();
 
+
+            // Configuramos escuchadores de eventos para actualizar la información de la batería
+        // cuando haya cambios en los diferentes estados de la batería.
+        // Los eventos son:
+        // - chargingchange: cuando cambia el estado de carga (comienza o termina de cargar).
+        // - levelchange: cuando cambia el nivel de la batería.
+        // - chargingtimechange: cuando cambia el tiempo hasta que se complete la carga.
+        // - dischargingtimechange: cuando cambia el tiempo hasta que la batería se descargue completamente.
             battery.addEventListener('chargingchange', updateBatteryStatus);
             battery.addEventListener('levelchange', updateBatteryStatus);
             battery.addEventListener('chargingtimechange', updateBatteryStatus);
             battery.addEventListener('dischargingtimechange', updateBatteryStatus);
         });
-    } else {
+    } else {// Si la API de batería no es soportada por el navegador, mostramos un mensaje informativo.
         batteryStatusContainer.innerHTML = '<p>API de batería no soportada en este navegador.</p>';
     }
 });
