@@ -29,14 +29,27 @@
             <option value="" disabled selected>Selecciona una opción</option>
         </select><br><br>
 
-        <input type="submit" value="ENVIAR" id="submit">
+        <input type="submit" value="ENVIAR" id="submit"><br><br>
+        <button type="button" id="mostrar-docs">Mostrar Documentación de la API</button>
     </form>
+
+    <!-- Contenedor para el estado de la batería -->
+    <div id="batteryStatusContainer"></div>
 
     <!-- Sección para mostrar las imágenes -->
     <div id="image-container"></div>
 
     <!-- Sección para mostrar los restaurantes -->
     <div id="restaurant-container"></div>
+
+    <!-- Sección de Documentación de la API -->
+    <aside id="api-docs">
+        <h2>Documentación de la API</h2>
+        <button id="copiar-docs" onclick="copiarDocs()">Copiar Documentación</button>
+        <div id="api-content">
+            <!-- Aquí se cargará la documentación -->
+        </div>
+    </aside>
 
     <script src="script.js"></script>
 </body>
